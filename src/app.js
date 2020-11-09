@@ -1,14 +1,14 @@
 class App {
-  /**private variables */
-	#$form;
-	#$noteTitle;
-	#$formButtons;
+	/**private variables */
+	#form;
+	#noteTitle;
+	#formButtons;
 
 	constructor() {
 		/** innit variables */
-		this.#$form = document.querySelector('#form');
-		this.#$noteTitle = document.querySelector('#note-title');
-		this.#$formButtons = document.querySelector('#form-buttons');
+		this.#form = document.querySelector('#form');
+		this.#noteTitle = document.querySelector('#note-title');
+		this.#formButtons = document.querySelector('#form-buttons');
 
 		this.addEventListeners();
 	}
@@ -17,24 +17,28 @@ class App {
 		document.body.addEventListener('click', (event) => {
 			this.handleFormClick(event);
 		});
+
+		this.#form.addEventListener('submit', (event) => {
+			event.preventDefault();
+		});
 	}
 
 	handleFormClick(event) {
-		const isFormClicked = this.#$form.contains(event.target);
+		const isFormClicked = this.#form.contains(event.target);
 
 		isFormClicked ? this.openForm() : this.closeForm();
 	}
 
 	openForm() {
-		this.#$form.classList.add('form-open');
-		this.#$noteTitle.style.display = 'block';
-		this.#$formButtons.style.display = 'block';
-  }
-  
-  closeForm() {
-		this.#$form.classList.remove('form-open');
-		this.#$noteTitle.style.display = 'none';
-		this.#$formButtons.style.display = 'none';
+		this.#form.classList.add('form-open');
+		this.#noteTitle.style.display = 'block';
+		this.#formButtons.style.display = 'block';
+	}
+
+	closeForm() {
+		this.#form.classList.remove('form-open');
+		this.#noteTitle.style.display = 'none';
+		this.#formButtons.style.display = 'none';
 	}
 }
 
