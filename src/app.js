@@ -15,8 +15,14 @@ class App {
     
     this.$form.addEventListener('submit', event => {
       event.preventDefault(); 
-      const title = this.$noteTitle.value;   
-      const text = this.$noteText.value;   
+      
+      const note = {
+        title: this.$noteTitle.value, 
+        text: this.$noteTitle.value
+      }
+
+      console.log(note)
+      this.closeForm()
     });
   }
 
