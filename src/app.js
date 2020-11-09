@@ -22,13 +22,19 @@ class App {
 	handleFormClick(event) {
 		const isFormClicked = this.#$form.contains(event.target);
 
-		isFormClicked ? this.openForm() : '';
+		isFormClicked ? this.openForm() : this.closeForm();
 	}
 
 	openForm() {
 		this.#$form.classList.add('form-open');
 		this.#$noteTitle.style.display = 'block';
 		this.#$formButtons.style.display = 'block';
+  }
+  
+  closeForm() {
+		this.#$form.classList.remove('form-open');
+		this.#$noteTitle.style.display = 'none';
+		this.#$formButtons.style.display = 'none';
 	}
 }
 
