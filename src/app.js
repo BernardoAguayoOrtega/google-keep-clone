@@ -2,6 +2,10 @@ class App {
 	constructor() {
 		this.$form = document.querySelector('#form');
 
+    this.$noteTitle = document.querySelector('#note-title');
+
+    this.$formButtons = document.querySelector('#form-buttons');
+
 		this.addEventListeners();
 	}
 
@@ -14,7 +18,13 @@ class App {
 	handleFormClick(event) {
 		const ifFormClicked = this.$form.contains(event.target);
 
-		ifFormClicked ? '' : '';
+		if (ifFormClicked) this.openForm;
+	}
+
+	openForm() {
+    this.$form.classList.add('form-open');
+    this.$noteTitle.style.display = 'block'
+    this.$formButtons.style.display = 'block'
 	}
 }
 
