@@ -52,6 +52,9 @@ class App {
 		this.$form.classList.remove('form-open');
 		this.$noteTitle.style.display = 'none';
 		this.$formButtons.style.display = 'none';
+
+		this.$noteTitle.value = '';
+		this.$noteText.value = '';
 	}
 
 	addNote(note) {
@@ -63,6 +66,7 @@ class App {
 		};
 		this.notes = [...this.notes, newNote];
 		this.displayNotes();
+		this.closeForm();
 	}
 
 	displayNotes() {
@@ -77,8 +81,8 @@ class App {
           <div class="note-text">${note.text}</div>
           <div class="toolbar-container">
             <div class="toolbar">
-              <img class="toolbar-color" src="https://icon.now.sh/palette">
-              <img class="toolbar-delete" src="https://icon.now.sh/delete">
+							<i class="fas fa-palette fa-2x"></i>
+              <i class="far fa-trash-alt fa-2x"></i>
             </div>
           </div>
         </div>

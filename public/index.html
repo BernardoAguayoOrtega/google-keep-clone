@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Google Clone</title>
   <link rel="stylesheet" href="../src/styles/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 </head>
 
 <body>
@@ -19,7 +20,7 @@
     <!--Form container--> 
     <div id="form-container">
       <form id="form" autocomplete="off">
-        <input id="note-title" placeholder="Title" type="text">
+        <input autofocus id="note-title" placeholder="Title" type="text">
         <input id="note-text" placeholder="Take a note..." type="text">
         <div id="form-buttons">
           <button type="submit" id="submit-button">Submit</button>
@@ -30,7 +31,7 @@
     <!--Notes--> 
     <div id="notes"></div>
     <div id="placeholder">
-      <img id="placeholder-logo" src="https://icon.now.sh/lightbulb_outline">
+      <i id="placeholder-logo"  class="far fa-lightbulb fa-8x"></i>
       <p id="placeholder-text">Notes you add appear here</p>
     </div>
   </main>
