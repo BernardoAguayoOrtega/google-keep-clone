@@ -6,18 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Google Clone</title>
   <link rel="stylesheet" href="../src/styles/index.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous" />
 </head>
 
 <body>
-  <!--Main section--> 
+  <!--modal-->
+  <div class="modal">
+    <div class="modal-content">
+      <input class="modal-title" placeholder="Title" type="text">
+      <input class="modal-text" placeholder="Take a note..." type="text">
+      <span class="modal-close-button">Close</span>
+    </div>
+  </div>
+  <!--Main section-->
   <main>
-    <!--Header--> 
+    <!--Header-->
     <header>
       <img class="header-logo" src="https://www.gstatic.com/images/branding/product/1x/keep_48dp.png">
       <h2 class="header-title">Keep</h2>
     </header>
-    <!--Form container--> 
+    <!--Form container-->
     <div id="form-container">
       <form id="form" autocomplete="off">
         <input autofocus id="note-title" placeholder="Title" type="text">
@@ -28,10 +38,10 @@
         </div>
       </form>
     </div>
-    <!--Notes--> 
+    <!--Notes-->
     <div id="notes"></div>
     <div id="placeholder">
-      <i id="placeholder-logo"  class="far fa-lightbulb fa-8x"></i>
+      <i id="placeholder-logo" class="far fa-lightbulb fa-8x"></i>
       <p id="placeholder-text">Notes you add appear here</p>
     </div>
   </main>
