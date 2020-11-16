@@ -2,6 +2,9 @@ class App {
 	constructor() {
 		// local variables
 		this.notes = [];
+		this.title = '';
+		this.text = '';
+		this.id = '';
 
 		// dom elements
 		this.$placeholder = document.querySelector('#placeholder');
@@ -12,6 +15,8 @@ class App {
 		this.$formButtons = document.querySelector('#form-buttons');
 		this.$formCloseButton = document.querySelector('#form-close-button');
 		this.$modal = document.querySelector('.modal');
+		this.$modalTitle = document.querySelector('.modal-title');
+		this.$modalText = document.querySelector('.modal-text');
 
 		// add event listener
 		this.addEventListeners();
@@ -20,7 +25,8 @@ class App {
 	addEventListeners() {
 		document.body.addEventListener('click', (event) => {
 			this.handleFormClick(event);
-			this.openModal(event);
+      this.selectNote(event);
+      this.openModal(event);
 		});
 
 		this.$form.addEventListener('submit', (event) => {
@@ -29,7 +35,6 @@ class App {
 			const text = this.$noteText.value;
 			const hasNote = title || text;
 			if (hasNote) {
-				// add note
 				this.addNote({ title, text });
 			}
 		});
@@ -90,7 +95,9 @@ class App {
 		this.$notes.innerHTML = this.notes
 			.map(
 				(note) => `
-        <div style="background: ${note.color};" class="note">
+        <div style="background: ${note.color};" class="note" data-id="${
+					note.id
+				}">
           <div class="${note.title && 'note-title'}">${note.title}</div>
           <div class="note-text">${note.text}</div>
           <div class="toolbar-container">
@@ -106,7 +113,23 @@ class App {
 	}
 
 	openModal(event) {
-		event.target.closest('.note') && this.$modal.classList.toggle('open-modal')
+		if (event.target.closest('.note')) {
+			this.$modal.classList.toggle('open-modal');
+			this.$modalTitle.value = this.title;
+			this.$modalText.value = this.text;
+		}
+	}
+
+	selectNote(event) {
+		const $selectedNote = event.target.closest('.note');
+
+		if (!$selectedNote) return;
+
+		const [$noteTitle, $noteText] = $selectedNote.children;
+
+		this.title = $noteTitle.innerText;
+		this.text = $noteText.innerText;
+		this.id = $selectedNote.dataset.id;
 	}
 }
 
