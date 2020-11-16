@@ -17,6 +17,7 @@ class App {
 		this.$modal = document.querySelector('.modal');
 		this.$modalTitle = document.querySelector('.modal-title');
 		this.$modalText = document.querySelector('.modal-text');
+		this.$modalCloseButton = document.querySelector('.modal-close-button');
 
 		// add event listener
 		this.addEventListeners();
@@ -25,8 +26,8 @@ class App {
 	addEventListeners() {
 		document.body.addEventListener('click', (event) => {
 			this.handleFormClick(event);
-      this.selectNote(event);
-      this.openModal(event);
+			this.selectNote(event);
+			this.openModal(event);
 		});
 
 		this.$form.addEventListener('submit', (event) => {
@@ -42,6 +43,10 @@ class App {
 		this.$formCloseButton.addEventListener('click', (event) => {
 			event.stopPropagation();
 			this.closeForm();
+		});
+
+		this.$modalCloseButton.addEventListener('click', (event) => {
+			this.closeModal(event);
 		});
 	}
 
@@ -120,6 +125,11 @@ class App {
 		}
 	}
 
+	closeModal(event) {
+		this.editNote();
+		this.$modal.classList.toggle('open-modal');
+	}
+
 	selectNote(event) {
 		const $selectedNote = event.target.closest('.note');
 
@@ -130,6 +140,15 @@ class App {
 		this.title = $noteTitle.innerText;
 		this.text = $noteText.innerText;
 		this.id = $selectedNote.dataset.id;
+	}
+
+	editNote() {
+		const title = this.$modalTitle.value;
+		const text = this.$modalText.value;
+		this.notes = this.notes.map((note) =>
+			note.id === Number(this.id) ? { ...note, title, text } : note,
+		);
+		this.displayNotes();
 	}
 }
 
