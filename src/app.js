@@ -35,6 +35,10 @@ class App {
 			this.openToolTip(event);
 		});
 
+		document.body.addEventListener('mouseout', (event) => {
+			this.closeToolTip(event);
+		});
+
 		this.$form.addEventListener('submit', (event) => {
 			event.preventDefault();
 			const title = this.$noteTitle.value;
@@ -160,11 +164,17 @@ class App {
 		if (!event.target.matches('#toolbar-color')) return;
 		this.id = event.target.nextElementSibling.dataset.id;
 		const noteCoords = event.target.getBoundingClientRect();
-		const horizontal = noteCoords.left + window.scrollX;
-		const vertical = noteCoords.top + window.scrollY;
+		console.log(noteCoords)
+    const horizontal = noteCoords.left;
+    const vertical = window.scrollY;
 
     this.$colorTooltip.style.transform = `translate(${horizontal}px, ${vertical}px)`;
     this.$colorTooltip.style.display = 'flex';
+	}
+
+	closeToolTip(event){
+    if (!event.target.matches('#toolbar-color')) return;
+    this.$colorTooltip.style.display = 'none';  
 	}
 }
 
