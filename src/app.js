@@ -18,6 +18,7 @@ class App {
 		this.$modalTitle = document.querySelector('.modal-title');
 		this.$modalText = document.querySelector('.modal-text');
 		this.$modalCloseButton = document.querySelector('.modal-close-button');
+		this.$colorTooltip = document.body.querySelector('#color-tooltip');
 
 		// add event listener
 		this.addEventListeners();
@@ -157,7 +158,13 @@ class App {
 
 	openToolTip(event) {
 		if (!event.target.matches('#toolbar-color')) return;
-		console.log("hey")
+		this.id = event.target.nextElementSibling.dataset.id;
+		const noteCoords = event.target.getBoundingClientRect();
+		const horizontal = noteCoords.left + window.scrollX;
+		const vertical = noteCoords.top + window.scrollY;
+
+    this.$colorTooltip.style.transform = `translate(${horizontal}px, ${vertical}px)`;
+    this.$colorTooltip.style.display = 'flex';
 	}
 }
 
