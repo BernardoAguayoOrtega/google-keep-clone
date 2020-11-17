@@ -30,6 +30,10 @@ class App {
 			this.openModal(event);
 		});
 
+		document.body.addEventListener('mouseover', (event) => {
+			this.openToolTip(event);
+		});
+
 		this.$form.addEventListener('submit', (event) => {
 			event.preventDefault();
 			const title = this.$noteTitle.value;
@@ -107,7 +111,7 @@ class App {
           <div class="note-text">${note.text}</div>
           <div class="toolbar-container">
             <div class="toolbar">
-							<i class="fas fa-palette fa-2x"></i>
+							<i class="fas fa-palette fa-2x" id="toolbar-color""></i>
               <i class="far fa-trash-alt fa-2x"></i>
             </div>
           </div>
@@ -149,6 +153,11 @@ class App {
 			note.id === Number(this.id) ? { ...note, title, text } : note,
 		);
 		this.displayNotes();
+	}
+
+	openToolTip(event) {
+		if (!event.target.matches('#toolbar-color')) return;
+		console.log("hey")
 	}
 }
 
