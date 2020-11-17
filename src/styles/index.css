@@ -292,8 +292,9 @@ input:focus {
 #color-tooltip {
 	border-bottom: 2px solid #fff;
 	position: absolute;
-	top: 0;
-	background: #fff;
+  top: 50%;
+  left: 45%;
+	background: black;
 	border: 1px solid black;
 	z-index: 300;
 	border-radius: 5px;
