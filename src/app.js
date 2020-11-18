@@ -36,7 +36,7 @@ class App {
 			this.openToolTip(event);
 		});
 
-		document.body.addEventListener('mouseout', (event) => {
+		document.body.addEventListener('click', (event) => {
 			this.closeToolTip(event);
 		});
 
@@ -172,7 +172,9 @@ class App {
 	}
 
 	closeToolTip(event) {
-
+		if (!event.target.matches('.color-modal')) return;
+		
+		this.$colorModal.style.display = 'none'
 	}
 }
 
