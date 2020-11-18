@@ -36,7 +36,7 @@ class App {
 			this.openToolTip(event);
 		});
 
-		document.body.addEventListener('click', (event) => {
+		this.$colorModal.addEventListener('click', (event) => {
 			this.closeToolTip(event);
 		});
 
@@ -58,6 +58,10 @@ class App {
 		this.$modalCloseButton.addEventListener('click', (event) => {
 			this.closeModal(event);
 		});
+
+		this.$colorTooltip.addEventListener('click', (event) => {
+
+		})
 	}
 
 	handleFormClick(event) {
@@ -175,6 +179,8 @@ class App {
 		if (!event.target.matches('.color-modal')) return;
 		
 		this.$colorModal.style.display = 'none'
+
+		this.$colorTooltip.style.display = 'none'
 	}
 }
 
