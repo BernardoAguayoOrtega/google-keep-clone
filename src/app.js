@@ -60,8 +60,11 @@ class App {
 		});
 
 		this.$colorTooltip.addEventListener('click', (event) => {
-
-		})
+			const color = event.target.dataset.color;
+			if (color) {
+				this.editNoteColor(color);
+			}
+		});
 	}
 
 	handleFormClick(event) {
@@ -121,7 +124,7 @@ class App {
           <div class="note-text">${note.text}</div>
           <div class="toolbar-container">
             <div class="toolbar">
-							<i class="fas fa-palette fa-2x" id="toolbar-color""></i>
+							<i class="fas fa-palette fa-2x" id="toolbar-color" data-id="${note.id}"></i>
               <i class="far fa-trash-alt fa-2x"></i>
             </div>
           </div>
@@ -167,20 +170,26 @@ class App {
 
 	openToolTip(event) {
 		if (!event.target.matches('#toolbar-color')) return;
-		this.id = event.target.nextElementSibling.dataset.id;
+		this.id = event.target.dataset.id;
 
 		this.$colorModal.style.display = 'flex';
 
-		this.$colorTooltip.style.display = 'flex'
-		
+		this.$colorTooltip.style.display = 'flex';
 	}
 
 	closeToolTip(event) {
 		if (!event.target.matches('.color-modal')) return;
-		
-		this.$colorModal.style.display = 'none'
 
-		this.$colorTooltip.style.display = 'none'
+		this.$colorModal.style.display = 'none';
+
+		this.$colorTooltip.style.display = 'none';
+	}
+
+	editNoteColor(color) {
+		this.notes = this.notes.map((note) =>
+			note.id === Number(this.id) ? { ...note, color } : note,
+		);
+		this.displayNotes();
 	}
 }
 
