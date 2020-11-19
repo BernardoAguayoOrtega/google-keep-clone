@@ -400,3 +400,18 @@ input:focus {
   width: 100vw;
   z-index: 1;
 }
+
+@media only screen and (max-width: 500px) {
+  #form-container {
+		width: 80%;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  #form-container {
+		width: 60%;
+	}
+	.modal-content{
+		width: 50%;
+	}
+}
